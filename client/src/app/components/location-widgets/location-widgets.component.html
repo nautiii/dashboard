@@ -1,0 +1,33 @@
+<div class="location-widgets-view" *ngFor="let widget of widgets; let index = index">
+
+    <mat-card *ngIf="widget.name === 'location'" class="example-card" cdkDrag>
+        <form [formGroup]="form[index]">
+            <mat-form-field class="example-form">
+                <input type="text" class="exe-input" matInput placeholder="Please input a Location"
+                    formControlName="location" required />
+            </mat-form-field>
+            <div class="text-center">
+                <button class="mat-button" mat-button color="primary" (click)="sendLocation(index)"
+                    [disabled]="!form[index].valid">Location</button>
+                <p *ngIf="position[index] !== undefined && position[index].location !== undefined"> Name:
+                    {{ this.position[index].location.name }}</p>
+                <p *ngIf="position[index] !== undefined && position[index].location !== undefined"> Country:
+                    {{ this.position[index].location.country }}</p>
+                <p *ngIf="position[index] !== undefined && position[index].location !== undefined"> Region:
+                    {{ this.position[index].location.region }}</p>
+                <p *ngIf="position[index] !== undefined && position[index].location !== undefined"> Lat:
+                    {{ this.position[index].location.lat }}</p>
+                <p *ngIf="position[index] !== undefined && position[index].location !== undefined"> Lon:
+                    {{ this.position[index].location.lon }}</p>
+                <p *ngIf="position[index] !== undefined && position[index].location !== undefined"> Localtime:
+                    {{ this.position[index].location.localtime }}</p>
+            </div>
+        </form>
+        <mat-card-actions class="delete-handle-stat">
+            <button mat-icon-button (click)="delWidget(index)">
+                <mat-icon> delete </mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+
+</div>

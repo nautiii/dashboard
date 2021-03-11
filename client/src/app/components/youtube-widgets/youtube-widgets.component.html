@@ -1,0 +1,91 @@
+<div class="youtube-widgets-view" *ngFor="let widget of widgets; let index = index">
+
+    <mat-card *ngIf="widget.name === 'STATISTICS'" class="example-box" cdkDrag>
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"
+                [ngStyle]="{'background-image': widget.infos.icon,'background-size': 'cover'}"></div>
+            <mat-card-title>{{ widget.name }}</mat-card-title>
+            <mat-card-subtitle>{{ widget.infos.title }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div *ngIf="widget.infos.error !== undefined">
+                <p>{{ widget.infos.error }}</p>
+            </div>
+            <div *ngIf="widget.infos.error === undefined && widget.options?.viewCount === true">
+                <p>views: {{ widget.infos.stats.viewCount }}</p>
+            </div>
+            <div *ngIf="widget.infos.error === undefined && widget.options?.videoCount === true">
+                <p>videos: {{ widget.infos.stats.videoCount }}</p>
+            </div>
+            <div *ngIf="widget.infos.error === undefined && widget.options?.subscriberCount === true">
+                <p>subscribers: {{ widget.infos.stats.subscriberCount }}</p>
+            </div>
+            <div *ngIf="widget.infos.error === undefined && widget.options?.hiddenSubscriberCount === true">
+                <p>hidden subscribers ? {{ widget.infos.stats.hiddenSubscriberCount ? 'yep' : 'nop' }}</p>
+            </div>
+        </mat-card-content>
+        <mat-card-actions class="delete-handle-stat">
+            <button mat-icon-button (click)="delWidget(index)">
+                <mat-icon> delete </mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+
+    <mat-card *ngIf="widget.name === 'SUBSCRIPTIONS'" class="example-box-bis" cdkDrag>
+        <mat-card-header>
+            <mat-card-title>{{ widget.name }}</mat-card-title>
+            <mat-card-subtitle *ngIf="widget.options?.title === true">{{ getSnippet(index, widget).title }}
+            </mat-card-subtitle>
+            <mat-card-subtitle *ngIf="widget.options?.totalResults === true">total: {{ widget.infos.total }}
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <a *ngIf="widget.options?.link === true" target="_blank" rel="noopener noreferrer"
+                href="https://www.youtube.com/channel/{{ getSnippet(index, widget).resourceId.channelId }}"><img
+                    class="youtuber-link" src="{{ getSnippet(index, widget).thumbnails.medium.url }}"></a>
+            <img *ngIf="widget.options?.link === false" class="youtuber-link"
+                src="{{ getSnippet(index, widget).thumbnails.medium.url }}">
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-icon-button (click)="prev(index)">
+                <mat-icon> arrow_left </mat-icon>
+            </button>
+            <button mat-icon-button (click)="next(index)">
+                <mat-icon> arrow_right </mat-icon>
+            </button>
+            <button class="delete-handle" mat-icon-button (click)="delWidget(index)">
+                <mat-icon> delete </mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+
+    <mat-card *ngIf="widget.name === 'LIKED VIDEOS'" class="example-box-bis-bis" cdkDrag>
+        <mat-card-header>
+            <mat-card-title>{{ widget.name }}</mat-card-title>
+            <mat-card-subtitle *ngIf="widget.options?.channel === true">
+                {{ getItem(index, widget).snippet.channelTitle }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <a target="_blank" rel="noopener noreferrer"
+                href="https://www.youtube.com/watch?v={{ getItem(index, widget).id }}">
+                <img class="video-link" src="{{ getItem(index, widget).snippet.thumbnails.medium.url }}">
+            </a>
+            <p></p>
+            <b *ngIf="widget.options?.videoTitle === true">{{ getItem(index, widget).snippet.title }}</b>
+            <p *ngIf="widget.options?.views === true" class="mini">views:
+                {{ getItem(index, widget).statistics.viewCount }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-icon-button (click)="prevVideo(index)">
+                <mat-icon> arrow_left </mat-icon>
+            </button>
+            <button mat-icon-button (click)="nextVideo(index)">
+                <mat-icon> arrow_right </mat-icon>
+            </button>
+            <button class="delete-handle" mat-icon-button (click)="delWidget(index)">
+                <mat-icon> delete </mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+
+</div>

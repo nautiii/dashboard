@@ -1,0 +1,83 @@
+<pre>
+{{ '{' }}
+    "client ": {{ '{' }}
+        "host": {{ ip }}
+    {{ '}' }},
+    "server ": {{ '{' }}
+        "current_time ": {{ utc }},
+        "services ": [{{ '{' }}
+            "name": "Youtube",
+            "widgets": [{{ '{' }}
+                "name": "statistics",
+                "description ": "Display statistics of your youtube channel",
+                "params ": [{{ '{' }}
+                    "name": "view count",
+                    "type": "number"
+                {{ '}' }}{{ '{' }}
+                    "name": "subscriber count",
+                    "type": "number"
+                {{ '}' }}{{ '{' }}
+                    "name": "hidden subscriber count",
+                    "type": "boolean"
+                {{ '}' }}{{ '{' }}
+                    "name": "video count",
+                    "type": "number"
+                {{ '}' }}]
+            {{ '}' }}, {{ '{' }}
+                "name": "subs",
+                "description ": "Display youtube channels you subscribed to",
+                "params ": [{{ '{' }}
+                    "name": "total subs",
+                    "type": "number"
+                {{ '}' }}{{ '{' }}
+                    "name": "link",
+                    "type": "image"
+                {{ '}' }}{{ '{' }}
+                    "name": "title",
+                    "type": "string"
+                {{ '}' }}]
+            {{ '}' }}, {{ '{' }}
+                "name": "liked videos",
+                "description ": "Display liked videos of your youtube account",
+                "params ": [{{ '{' }}
+                    "name": "channel",
+                    "type": "boolen"
+                {{ '}' }}{{ '{' }}
+                    "name": "title",
+                    "type": "boolean"
+                {{ '}' }}{{ '{' }}
+                    "name": "views",
+                    "type": "boolean"
+                {{ '}' }}]
+            {{ '}' }}]
+        {{ '}' }}, {{ '{' }}
+            "name": "City",
+            "widgets ": [{{ '{' }}
+                "name": "weather",
+                "description ": "Display informations about weather",
+                "params ": [{{ '{' }}
+                    "name": "city",
+                    "type": "string"
+                {{ '}' }}]
+            {{ '}' }}, {{ '{' }}
+                "name": "location",
+                "description ": "Display informations about your location",
+                "params ": [{{ '{' }}
+                    "name": "city",
+                    "type": "string"
+                {{ '}' }}]
+            {{ '}' }}]
+        {{ '}' }}, {{ '{' }}
+            "name": "Currency",
+            "widgets": [{{ '{' }}
+                "name": "converter",
+                "description ": "Convert value of 1 unit into USD value",
+                "params ": [{{ '{' }}
+                    "name": "unit",
+                    "type": "string"
+                {{ '}' }}]
+            {{ '}' }}]
+        {{ '}' }}]
+    {{ '}' }}
+{{ '}' }}
+</pre>

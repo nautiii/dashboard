@@ -1,0 +1,33 @@
+<div class="weather-widgets-view" *ngFor="let widget of widgets; let index = index">
+
+    <mat-card *ngIf="widget.name === 'weather'" class="example-card" cdkDrag>
+        <form [formGroup]="form[index]">
+            <mat-form-field class="example-form">
+                <input type="text" class="exe-input" matInput placeholder="Please input a Location"
+                    formControlName="location" required />
+            </mat-form-field>
+            <div class="text-center">
+                <button class="mat-button" mat-button color="primary" (click)="sendWeather(index)"
+                    [disabled]="!form[index].valid">Weather</button>
+                <p *ngIf="weather[index] !== undefined && weather[index].location !== undefined"> Observation_time:
+                    {{ this.weather[index].current.observation_time }}</p>
+                <p *ngIf="weather[index] !== undefined && weather[index].location !== undefined"> Temperature:
+                    {{ this.weather[index].current.temperature }}</p>
+                <p *ngIf="weather[index] !== undefined && weather[index].location !== undefined"> Humidity:
+                    {{ this.weather[index].current.humidity }}</p>
+                <p *ngIf="weather[index] !== undefined && weather[index].location !== undefined"> Vissibility:
+                    {{ this.weather[index].current.visibility }}</p>
+                <p *ngIf="weather[index] !== undefined && weather[index].location !== undefined"> Pressure:
+                    {{ this.weather[index].current.pressure }}</p>
+                <p *ngIf="weather[index] !== undefined && weather[index].location !== undefined"> Wind_dir:
+                    {{ this.weather[index].current.wind_dir }}</p>
+            </div>
+        </form>
+        <mat-card-actions class="delete-handle-stat">
+            <button mat-icon-button (click)="delWidget(index)">
+                <mat-icon> delete </mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+
+</div>

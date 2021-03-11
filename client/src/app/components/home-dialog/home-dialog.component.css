@@ -1,0 +1,8 @@
+.dialog {
+    display: flex;
+    flex-direction: column;
+}
+
+.diag-button {
+    margin: 20px;
+}

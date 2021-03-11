@@ -1,0 +1,16 @@
+<div class="dialog" mat-dialog-content>
+    <mat-slide-toggle *ngIf="dataSet.viewCount !== undefined" [(ngModel)]="dataSet.viewCount"> view count </mat-slide-toggle>
+    <mat-slide-toggle *ngIf="dataSet.subscriberCount !== undefined" [(ngModel)]="dataSet.subscriberCount"> subscriber count </mat-slide-toggle>
+    <mat-slide-toggle *ngIf="dataSet.hiddenSubscriberCount !== undefined" [(ngModel)]="dataSet.hiddenSubscriberCount"> hidden subscriber count </mat-slide-toggle>
+    <mat-slide-toggle *ngIf="dataSet.videoCount !== undefined" [(ngModel)]="dataSet.videoCount"> video count </mat-slide-toggle>
+    <mat-slide-toggle *ngIf="dataSet.totalResults !== undefined" [(ngModel)]="dataSet.totalResults"> total subs </mat-slide-toggle>
+    <mat-slide-toggle *ngIf="dataSet.link !== undefined" [(ngModel)]="dataSet.link"> link </mat-slide-toggle>
+    <mat-slide-toggle *ngIf="dataSet.title !== undefined" [(ngModel)]="dataSet.title"> title </mat-slide-toggle>
+    <mat-slide-toggle *ngIf="dataSet.channel !== undefined" [(ngModel)]="dataSet.channel"> channel </mat-slide-toggle>
+    <mat-slide-toggle *ngIf="dataSet.videoTitle !== undefined" [(ngModel)]="dataSet.videoTitle"> videoTitle </mat-slide-toggle>
+    <mat-slide-toggle *ngIf="dataSet.views !== undefined" [(ngModel)]="dataSet.views"> views </mat-slide-toggle>
+</div>
+<div mat-dialog-actions>
+    <button class="diag-button" mat-button (click)="onNoClick()"> close </button>
+    <button class="diag-button" mat-button [mat-dialog-close]="dataSet" cdkFocusInitial> ok </button>
+</div>

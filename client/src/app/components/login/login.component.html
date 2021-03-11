@@ -1,0 +1,23 @@
+<div class="center-box">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="form">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Login</mat-label>
+                    <input type="text" matInput placeholder="Username" formControlName="username" required>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput placeholder="Password" formControlName="password" required>
+                </mat-form-field>
+                <button class="mat-button" mat-button color="primary" (click)="loadFromDb()" [disabled]="!form.valid">Login</button>
+                <button class="mat-button" mat-button color="primary" [routerLink]="'/signup'">Register</button>
+                <button class="mat-button" mat-button color="primary" (click)="googleSignIn()">Google</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

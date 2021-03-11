@@ -1,0 +1,48 @@
+<mat-drawer-container class="example-container" autosize>
+
+    <mat-drawer #drawer class="example-sidenav" mode="side" opened>
+        <mat-tree [dataSource]="tree.getDataSource" [treeControl]="tree.getTreeControl">
+            <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+                <button mat-icon-button (click)="newWidget(node.name)">
+                    <mat-icon> add </mat-icon>
+                </button>
+                {{ node.name }}
+            </mat-tree-node>
+            <mat-tree-node *matTreeNodeDef="let node;when: tree.hasChild" matTreeNodePadding>
+                <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
+                    <mat-icon class="mat-icon-rtl-mirror">
+                        {{ tree.getTreeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
+                    </mat-icon>
+                </button>
+                <b>{{ node.name }}</b>
+            </mat-tree-node>
+        </mat-tree>
+    </mat-drawer>
+
+    <mat-toolbar>
+        <button mat-icon-button class="example-icon" (click)="drawer.toggle()">
+            <mat-icon> menu </mat-icon>
+        </button>
+        <span>
+            <p *ngIf="user != undefined" class="text-pos"> {{ user.username }}'s Dashboard </p>
+        </span>
+        <span class="example-spacer"></span>
+        <button mat-mini-fab (click)="signOut()" color="primary" class="example-icon" aria-label="Example icon-button with share icon">
+            <mat-icon>logout</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <mat-tab-group class="tabs" mat-align-tabs="center">
+        <mat-tab label="Youtube" class="mat-tab-labels">
+            <app-youtube-widgets [widgets]="widgets"></app-youtube-widgets>
+        </mat-tab>
+        <mat-tab label="City" class="mat-tab-labels">
+            <app-weather-widgets [widgets]="widgets"></app-weather-widgets>
+            <app-location-widgets [widgets]="widgets"></app-location-widgets>
+        </mat-tab>
+        <mat-tab label="Currency" class="mat-tab-labels">
+            <app-currency-widgets [widgets]="widgets"></app-currency-widgets>
+        </mat-tab>
+    </mat-tab-group>
+
+</mat-drawer-container>
